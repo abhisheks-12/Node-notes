@@ -13,6 +13,7 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yml');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+
 app.get('/', (req, res) => {
   res.status(200).send('<h1>Hello From Earth</h1>');
 });
