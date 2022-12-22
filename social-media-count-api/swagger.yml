@@ -6,7 +6,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://localhost:4000/api/v1
+  - url: https://social-api-4jtx.onrender.com
     description: Returns user details
 
 paths:
