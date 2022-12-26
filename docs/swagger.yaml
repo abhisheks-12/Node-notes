@@ -1,0 +1,30 @@
+openapi: 3.0.0
+
+info:
+  title: docs
+  description: 'learn swagger and express'
+  version: 1.0.0
+  contact:
+    email: abhishek.sankpal12@gmail.com
+    url: 'https://facke.com'
+
+servers:
+  - url: '{protocol}://localhost:4000/{version}'
+    description: Expermintal Production Server
+    variables:
+      version:
+        default: v1
+        enum:
+          - v1
+          - v2
+      protocol:
+        default: http
+        enum:
+          - http
+          - https
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
