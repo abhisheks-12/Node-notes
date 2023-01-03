@@ -1,11 +1,14 @@
 const express = require('express');
-const app = express();
 const PORT = 4000;
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
+const app = express();
 // cross origin error
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(fileUpload());
 
 // swagger docs integration
 const swaggerUi = require('swagger-ui-express');
@@ -68,6 +71,24 @@ app.get('/api/v1/searchSong', (req, res) => {
   const { song, rating } = req.query;
   res.json({ song, rating });
 });
+
+app.post('/api/v1/upload', (req, res) => {
+  console.log(performance.now());
+  const sampleFile = req.files.sampleFile;
+
+  const path = __dirname + '/Images/' + Date.now() + '.jpg';
+
+  sampleFile.mv(path, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    res.json('File Uploaded');
+  });
+
+  console.log(performance.now());
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.......`);
