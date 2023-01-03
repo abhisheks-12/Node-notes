@@ -73,7 +73,7 @@ app.get('/api/v1/searchSong', (req, res) => {
 });
 
 app.post('/api/v1/upload', (req, res) => {
-  console.log(performance.now());
+ 
   const sampleFile = req.files.sampleFile;
 
   const path = __dirname + '/Images/' + Date.now() + '.jpg';
@@ -86,7 +86,7 @@ app.post('/api/v1/upload', (req, res) => {
     res.json('File Uploaded');
   });
 
-  console.log(performance.now());
+ 
 });
 
 

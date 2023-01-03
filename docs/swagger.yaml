@@ -212,28 +212,38 @@ paths:
         '500':
           description: internal server error
 
-  # Image Upload
-  # /upload:
-  #   post:
-  #     tags:
-  #       - string
-  #     summary: Upload thumbnail
-  #     requestBody:
-  #       content:
-  #         multipart/form-data:
-  #           schema:
-  #             type: string
-  #             format: binary
+  #  Upload Image
+  /upload:
+    post:
+      tags:
+        - string
+      summary: Upload data
+      parameters:
+        - in: header
+          name: auth
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                sampleFile:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  rating:
+                    type: string
 
-  #     responses:
-  #       '200':
-  #         description: Successful operation
-  #         content:
-  #           application/json:
-  #             schema:
-  #               type: string
-
-  #       '400':
-  #         description: Bad Request
-  #       '500':
-  #         description: internal server error
+        '400':
+          description: Bad Request
+        '500':
+          description: internal server error
